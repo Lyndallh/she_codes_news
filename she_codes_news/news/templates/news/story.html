@@ -8,10 +8,19 @@
 
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>
-    <h4>{{ story.author }}</h4>
+    <div id = "author">
+        <h4>{{ story.author }}</h4>
+    </div>
+    
     <div id="story-content">
-        <img src="{% static '/news/images/placeholder-5.jpg' %}">
+        {% if story.image %}
+        <img src="{{ story.image }}">
+        {% else %}
+            <!-- <img src="{% static '/news/images/placeholder-5.jpg' %}">--->
+            <img src="https://picsum.photos/700">
+        {% endif %}
         {{ story.content|linebreaks }}
     </div>
 </div>
 {% endblock %}
+
