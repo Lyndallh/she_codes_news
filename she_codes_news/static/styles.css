@@ -1,12 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap');
+:root {
+    --black: #2A2935;
+    --darkblue: #274574;
+    --teal-dark: #086E8D;
+    --teal-light: #93C6D3;
+    --lightblue: #EAFCFB;
+    --sand: #E9E3DE;
+}
 
 
 html{
     font-size: 1rem;
-    line-height: 1.5rem;
+    line-height: 1.2rem;
 }
 body {
-    background-color: hotpink;
+    background-color: #93C6D3;
     font-family: 'Rubik', sans-serif;
 
 }
@@ -15,7 +23,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 100px solid #000;
+    border-bottom: 1px solid #000;
 }
 
 /* img {
@@ -64,5 +72,30 @@ a, p {
 }
 
 #new-story{
-    background-color: blueviolet;
+    background-color: var(--darkblue);
+    padding: 5px;
+    border-radius: 5px;
+    color: #E9E3DE;
+}
+
+input, textarea{
+    background-color: var(--sand);
+    border-color: var(--darkblue);
+    border-radius: 5px;
+    border-width: 1px;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+}
+
+form{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start ;
+    align-items: flex-start;
+    
+}
+
+p{
+    display: flex;
+    flex-flow: column wrap;
 }
