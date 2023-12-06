@@ -7,7 +7,7 @@
     --sand: #E9E3DE;
 }
 
-
+.emphasized { font-style: italic; }
 .story-card {
     margin: 2px;
     border: 1px solid var(--darkblue);

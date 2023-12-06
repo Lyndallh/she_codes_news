@@ -21,6 +21,24 @@
         {% endif %}
         {{ story.content|linebreaks }}
     </div>
+    <section>
+        <div>
+            <form method = "POST" action= "{% url 'news:addComment' story.id %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type ="submit" value="Submit">
+            </form>
+        </div>
+        {% if story.comments %}
+            {% for comments in story.comments.all %}
+
+                <p>{{ comments.author }} said <span class="emphasized"> {{ comments.text }} </span> at {{ comments.date }}</p>                  
+
+            {% endfor %}
+        {% else %}
+            <p>Be the first to make a comment</p>
+        {% endif %}
+    </section>
 </div>
 {% endblock %}
 

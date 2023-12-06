@@ -99,3 +99,5 @@ p{
     display: flex;
     flex-flow: column wrap;
 }
+
+.emphasized { font-style: italic; }
