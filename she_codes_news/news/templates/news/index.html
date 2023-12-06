@@ -19,11 +19,11 @@
         {% endif %}
     </div>
 
-    <h2>All News Stories</h2>
+    <h2>Other News Stories</h2>
 
-    <div id="all-stories">
-        {% if all_stories %}
-            {% for story in all_stories %}
+    <div id="other-stories">
+        {% if other_stories %}
+            {% for story in other_stories %}
                 {% include "./storyCard.html" with story=story %}
                 <!-- <p>{{ story.title }}</p> -->
             {% endfor %}

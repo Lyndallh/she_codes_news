@@ -19,7 +19,12 @@ class IndexView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
+        # context for 'other_stories' that are not in the 'latest_stories' to be used on index.html so that stories are not shown twice
+        context['other_stories'] = NewsStory.objects.all().order_by('-pub_date')[4:]
         return context
+
+
+
 
 class StoryView(generic.DetailView):
     model = NewsStory
