@@ -6,6 +6,7 @@ from .forms import StoryForm
 from .forms import CommentForm
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class IndexView(generic.ListView):
@@ -23,9 +24,23 @@ class IndexView(generic.ListView):
         context['other_stories'] = NewsStory.objects.all().order_by('-pub_date')[4:]
         return context
 
+class AuthorView(generic.ListView):
+    model = NewsStory
+    template_name = 'news/author.html'
+    context_object_name = "author_stories"
+    slug_feild = 'username'
+    slug_url_kwarg = 'username'
 
-
-
+    def get_queryset(self):
+        '''Return all authors stories.'''
+        return NewsStory.objects.all().order_by('-pub_date').filter(author_id=self.kwargs.get("author_id"))
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['username']= self.kwargs.get() 
+        # /*related username")
+        return context
+    
 class StoryView(generic.DetailView):
     model = NewsStory
     template_name = 'news/story.html'
@@ -36,7 +51,8 @@ class StoryView(generic.DetailView):
         context['form']= CommentForm()
         return context
 
-class AddStoryView(generic.CreateView):
+class AddStoryView(LoginRequiredMixin, generic.CreateView):
+    login_url = 'login'
     form_class = StoryForm
     context_object_name = 'storyform'
     template_name = 'news/createStory.html'
@@ -47,6 +63,7 @@ class AddStoryView(generic.CreateView):
         return super().form_valid(form)
 
 class AddCommentView(generic.CreateView):
+    
     form_class = CommentForm
 
     def get(self, request, *args, **kwargs):

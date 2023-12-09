@@ -71,7 +71,7 @@ a, p {
     background-color: blue;
 }
 
-#new-story{
+#new-story, .hyperlink-button{
     background-color: var(--darkblue);
     padding: 5px;
     border-radius: 5px;

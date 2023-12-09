@@ -23,11 +23,16 @@
     </div>
     <section>
         <div>
+            {% if request.user.is_authenticated %}
             <form method = "POST" action= "{% url 'news:addComment' story.id %}">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input type ="submit" value="Submit">
             </form>
+        {% else %}
+            <a class = "hyperlink-button" href="{% url 'login' %}?next={{request.path}}">Login to add a comment</a>
+        {% endif %}
+
         </div>
         {% if story.comments %}
             {% for comments in story.comments.all %}
