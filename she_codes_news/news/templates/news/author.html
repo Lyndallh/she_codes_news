@@ -7,7 +7,7 @@
 <br>
 <a id= "new-story" href="{% url 'news:newStory' %}">Write New Story</a>
 
-   <h2>{{ username }}'s News</h2>
+   <h2>{{ user.username }}'s News</h2>
 
    <div id="all-stories">
     {% if author_stories %}
