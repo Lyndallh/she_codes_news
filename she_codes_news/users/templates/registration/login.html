@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h2>Login</h2>
-
+<p>Please log in here:</p>
 <form method="post">    
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
+    <button class="hyperlink-button" type="submit">Login</button>
 </form>
+<br>
+<div id = "signup">
+    <p>Not yet one of us?</p>
+    <a class="hyperlink-button" href="/users/create-account?next={{request.path}}">Sign up</a>
+</div>
 
 {% endblock %}
