@@ -68,11 +68,7 @@ a, p {
 }
 
 #author{
-    background-color: var(--teal-dark);
-    color: var(--sand);
-    font-size: 2rem;
-    padding: 1px;
-    margin: 5px;
+    background-color: blue;
 }
 
 #new-story, .hyperlink-button{
