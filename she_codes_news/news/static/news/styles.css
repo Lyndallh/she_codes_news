@@ -13,8 +13,9 @@
     border: 1px solid var(--darkblue);
     border-radius: 5px;
     padding: 5px;
-    background-color: #E9E3DE;
-}
+    background-color: var(--sand);  }
+.story-card:hover{
+    background-color: var(--lightblue);  }
 
 .story-card img {
     width: 100%;
