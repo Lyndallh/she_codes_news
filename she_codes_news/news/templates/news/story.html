@@ -7,42 +7,48 @@
 
 
 <div id="story-wrapper">
-    <h2>{{ story.title }}</h2>
-    <div id = "author">
-        <h4>{{ story.author }}</h4>
-    </div>
-    
+    <h3>{{ story.title }}</h3>
+    <h4>Written by <a href = "{% url 'news:author' story.author_id %}">{{ story.author }}</a><h4>
+    <h6>{{ story.pub_date}}</h6>
+    <br>
+
     <div id="story-content">
         {% if story.image %}
-        <img src="{{ story.image }}">
-        {% else %}
-            <!-- <img src="{% static '/news/images/placeholder-5.jpg' %}">--->
-            <img src="https://picsum.photos/700">
-        {% endif %}
+            <img src="{{ story.image }}">
+            {% else %}
+                <img src="https://picsum.photos/700">
+            {% endif %}
         {{ story.content|linebreaks }}
     </div>
+    <br>
+
+    <!-- DISPLAY COMMENT SECTION -->
     <section>
-        <div>
-            {% if request.user.is_authenticated %}
+        <h5>COMMENTS</h5>
+<br>
+    {% if story.comments.all %}
+        {% for comments in story.comments.all %}
+        <span class="emphasized"> {{ comments.text }} </span>
+        <h6><a href = "{% url 'news:author' comments.author_id %}">- {{ comments.author }}, {{ comments.date }}</a></h6>
+            <br>                  
+        {% endfor %}
+        {% else %}
+            <p>There are no comments for this story..... yet.</p>
+        {% endif %}
+    </section>
+    <br>
+    <!-- ADD COMMENT SECTION -->
+    <section>
+        {% if request.user.is_authenticated %}
             <form method = "POST" action= "{% url 'news:addComment' story.id %}">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input type ="submit" value="Submit">
+                <h5>Leave a comment:</h5>
+                {{ form.text }}
+                <input class= "hyperlink-button" type ="submit" value="Submit">
             </form>
-        {% else %}
-            <a class = "hyperlink-button" href="{% url 'login' %}?next={{request.path}}">Login to add a comment</a>
-        {% endif %}
-
-        </div>
-        {% if story.comments %}
-            {% for comments in story.comments.all %}
-
-                <p>{{ comments.author }} said <span class="emphasized"> {{ comments.text }} </span> at {{ comments.date }}</p>                  
-
-            {% endfor %}
-        {% else %}
-            <p>Be the first to make a comment</p>
-        {% endif %}
+            {% else %}
+                <a class = "hyperlink-button" href="{% url 'login' %}?next={{request.path}}">Login to add a comment</a>
+            {% endif %}
     </section>
 </div>
 {% endblock %}

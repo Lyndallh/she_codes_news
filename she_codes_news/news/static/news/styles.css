@@ -98,5 +98,6 @@
 #story-content img {
     float: right;
     margin: 0 0 10px 10px;
-    width: 50%;
+    max-width: 25rem;
+    border-radius: 10px;
 }

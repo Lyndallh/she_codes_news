@@ -15,15 +15,20 @@
     <body>
         <header>
             <div id="header-text">
-                <a id="header-link" href="{% url 'news:index' %}">
-                    <h1>She {Codes} News</h1>
-                </a>
+                <a href="{% url 'news:index' %}" >
+                    <img id = logo src="https://github.com/Lyndallh/Lyndallh.github.io/blob/main/images/ABC-logo.png?raw=true" > 
+                </a>               
+                <a class = "hyperlink" id="header-link" href="{% url 'news:index' %}">
+                    <h1>Analytics, Bikes, Coding</h1></a>
             </div>
             <!-- include nav here -->
             {% include './nav.html' %}
-        </header>
 
-        <!-- content blocks here -->
+
+        </header>
+        <main>
+<!-- content blocks here -->
         {% block content %}{% endblock %}
+    </main>
     </body>
 </html>

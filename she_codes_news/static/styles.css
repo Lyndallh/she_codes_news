@@ -6,17 +6,23 @@ html {
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 *, *:before, *:after {
     box-sizing: inherit;
 }
+
 body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     margin: 0;
     padding: 0;
     font-weight: normal;
 }
+
+main {margin: 1%;}
+
 ol, ul {
     list-style: none;
 }
+
 img {
     max-width: 100%;
     height: auto;
@@ -25,81 +31,88 @@ img {
 :root {
   --black: #2A2935;
   --darkblue: #274574;
-  --teal-dark: #086E8D;
+  --teal-dark: #0A6480;
   --teal-light: #93C6D3;
-  --lightblue: #EAFCFB;
+  --lightblue: #CFDAF2;
   --sand: #E9E3DE;
-}
 
+/*  inherited colors  */
+  --text: #2A2935;
+}
 
 /* set default font style here */
 html, body{
   font-size:18px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.4;
+  background-color: var(--teal-light);
+  color: var(--black);
 }
 
 /* Add Heading styles here  */
 h1 {  
-  margin-top: 0;
-  font-size: 2.488rem;
-  font-family: 'Milonga', sans-serif;
-
+    margin-top: 0;
+    font-size: 1.44rem;
+    font-family: 'Milonga', sans-serif;
 }
+
 h2 {
-  font-size: 2.074rem;
-   font-family: 'Karma', serif; 
+    font-size: 2.074rem;
+    font-family: 'Karma', serif; 
 }
+
 h3 {
-  font-size: 1.728rem;
-    font-family: 'Oswald', sans-serif;
-  text-transform: uppercase
-
-}
-h4 {
-  font-size: 1.44rem;
-}
-h5{
-  font-size: 1.2rem;
-
-}
-h6{
-  font-size: 0.833rem;
-
-}
-
-header{ 
-    display:flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    color: var(--sand);
-    background-color: var(--darkblue);
     font-size: 1.728rem;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase
 }
 
-#logo{
-        height: 100px;    
-        margin: 10px;
-        display: inline-block;
-        }
+h4 {
+    font-size: 1.44rem;
+    font-family: 'Karma', serif;   
+}
 
+h5{
+    font-size: 1.2rem;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+}
+
+h6{
+    font-size: 0.833rem;
+    font-family: 'Karma', serif; 
+
+}
+
+small, .text_small {font-size: 0.6rem;}
+
+/*  testing code to show gaps */
+
+html {
+    color: hotpink;
+}
+
+/* header styling  */
+header{ 
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--sand);
+    background-color: var(--darkblue);  
+    height:120px
+}
+#logo{
+    height: 100px; 
+    max-width: 100px;
+    margin: auto;
+    display: inline-block;
+}
 a {
-    font-size: 1rem;
     text-decoration: none;
     margin: 0 10px;
     }
-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-grow: 3;
-
-}
 
 a {
     margin: 2px;
@@ -107,27 +120,27 @@ a {
     color: var(--black);
 }
 
-nav a:hover {
-    text-decoration: underline;
-}
-
 #header-text {
-    flex-basis: 80%;
+    flex-basis: 20%;
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#header-link{
+    color: var(--sand);
 }
 
 nav {
-    flex-basis: 20%;
+    flex-basis: 80%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    color: var(--darkblue);
-    background-color: var(--teal-dark);
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items:center;
+    flex-wrap: wrap;
 }
 
-nav a, #header-link {
+nav a {
     color: var(--sand);
 }
 
@@ -136,12 +149,19 @@ nav a, #header-link {
 }
 
 #new-story, .hyperlink-button{
-    background-color: var(--darkblue);
+    background-color: var(--teal-dark);
     padding: 5px;
     border-radius: 5px;
+    border-width: 1px;
+    border-color: #2A2935;
     color: #E9E3DE;
 }
-
+#new-story:hover, .hyperlink-button:hover{
+    box-shadow:  0 0 10px var(--sand),0 0 20px var(--black), 0 0 30px var(--darkblue);
+}
+.hyperlink:hover{
+    text-shadow:  0 0 10px var(--black),0 0 20px var(--sand), 0 0 30px var(--teal-dark);
+}
 input, textarea{
     background-color: var(--sand);
     border-color: var(--darkblue);
@@ -167,3 +187,25 @@ p{
 }
 
 .emphasized { font-style: italic; }
+
+.comments{
+    display: grid;
+    column-gap: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--darkblue);
+    border-radius: 5px;
+    padding: 5px;
+    background-color: var(--sand);
+}
+.comments:hover{
+    background-color: var(--lightblue);  }
+#comment_text {
+    grid-area: 1 / 1 / span 1 / span 3;
+  }
+  #story_title{
+    grid-area: 1 / 4 / span 2 / span 1;
+    text-align: right;
+}
+#comment_date{
+    grid-area: 3 / 1 / span 1 / span 4;
+}

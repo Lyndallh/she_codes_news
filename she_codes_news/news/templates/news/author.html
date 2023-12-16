@@ -5,19 +5,45 @@
 {% endblock %}
 {% block content %}
 <br>
-<a id= "new-story" href="{% url 'news:newStory' %}">Write New Story</a>
 
-   <h2>{{ user.username }}'s News</h2>
+<h2>Latest News from {{ author }}</h2>
 
-   <div id="all-stories">
-    {% if author_stories %}
-        {% for story in author_stories %}
+<div id="author_latest_stories">
+    {% if author_latest_stories %}
+        {% for story in author_latest_stories %}
             {% include './storyCard.html' with story=story position=forloop.counter %}
         {% endfor %}
     {% else %}
         <p>No stories are available.</p>
     {% endif %}
-    </div>
+</div>
+<br>
+<h2>{{ author }}'s Other News Stories</h2>
 
- 
+<div id="author_other_stories">
+    {% if author_other_stories %}
+        {% for story in author_other_stories %}
+            {% include "./storyCard.html" with story=story %}
+            <!-- <p>{{ story.title }}</p> -->
+        {% endfor %}
+    {% else %}
+        <p>No stories are available.</p>
+    {% endif %}
+</div>
+<br>
+<!-- AUTHOR COMMENTS SECTION -->
+<h2>{{ author }}'s Comments</h2>
+  <div id="author_comments">
+    {% if author_comments %}
+        {% for comments in author_comments %}
+        <a class = "comments" href="{%url 'news:story' comments.story.id %}">
+            <span id="comment_text" class="emphasized"> {{ comments.text }} </span>       
+            <h6 id = "comment_date"> - {{ comments.date }}</h6> 
+            <h5 id = "story_title"> {{comments.story.title}}</h5>
+        {% endfor %}
+    {% else %}
+        <p>No comments for {{ author }} yet.</p>
+    {% endif %}
+
+
 {% endblock %}

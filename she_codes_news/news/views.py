@@ -1,14 +1,14 @@
 from typing import Any
 from django.views import generic
 from django.urls import reverse_lazy
-from .models import NewsStory
+from .models import NewsStory, Comment
 from .forms import StoryForm
 from .forms import CommentForm
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import get_user_model
-CustomUser = get_user_model()
+from users.models import CustomUser
 
 
 class IndexView(generic.ListView):
@@ -26,21 +26,21 @@ class IndexView(generic.ListView):
         context['other_stories'] = NewsStory.objects.all().order_by('-pub_date')[4:]
         return context
 
-class AuthorView(generic.ListView):
-    model = NewsStory
+class AuthorView(generic.DetailView):
+    model = CustomUser
     template_name = 'news/author.html'
-    context_object_name = "author_stories"
-    slug_feild = 'username'
-    slug_url_kwarg = 'username'
+    context_object_name = "author"
 
-    def get_queryset(self):
-        '''Return all authors stories.'''
-        return NewsStory.objects.all().order_by('-pub_date').filter(author_id=self.kwargs.get("author_id"))
+    def get_object(self, *args, **kwargs):
+        return CustomUser.objects.get(pk=self.kwargs['pk'])
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['username']= self.kwargs.get(CustomUser) 
-        return context
+        context['author_latest_stories'] = NewsStory.objects.filter(author_id=self.kwargs['pk']).order_by('-pub_date')[:4]
+        context['author_other_stories'] = NewsStory.objects.filter(author_id=self.kwargs['pk']).order_by('-pub_date')[4:]
+        context['author'] = CustomUser.objects.get(id=self.kwargs['pk'])
+        context['author_comments'] = Comment.objects.filter(author_id=self.kwargs['pk']).order_by('-date')
+        return context    
     
 class StoryView(generic.DetailView):
     model = NewsStory

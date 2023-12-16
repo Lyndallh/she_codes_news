@@ -16,12 +16,17 @@ class CreateAccountView(CreateView):
 class AccountView(generic.DetailView):
     model = CustomUser
     template_name = 'users/profile.html'
-    context_object_name = 'user'
+    context_object_name = 'profile'
 
+    def get_object(self, *args, **kwargs):
+        return self.request.user
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['user_stories'] = NewsStory.objects.filter(author=self.kwargs['pk']).order_by('-pub_date')
-        context['user_comments'] = Comment.objects.filter(author=self.kwargs['pk']).order_by('-date')
+        context['user_stories'] = NewsStory.objects.filter(author=self.request.user).order_by('-pub_date')
+        # USING PK
+        # context['user_comments'] = Comment.objects.filter(author=self.kwargs['pk']).order_by('-date')
+        context['user_comments'] = Comment.objects.filter(author=self.request.user).order_by('-date')
         return context
     
 
