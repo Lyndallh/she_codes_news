@@ -1,4 +1,4 @@
- #{{ your_name_here }} - She Codes News Project
+ #Lindi Harding - She Codes News Project
  
  ## About This Project
  
