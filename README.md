@@ -12,7 +12,7 @@
 When you need to specify terminal commands, you can surround them withbackticks, like so: `python manage.py runserver`. This formats them ascode in the markdown document. (The backtick key is to the left of thenumber 1 at the top of your keyboard.)}}
 
 ## Database Schema
-![ ABC ERD ]  ( ./she_codes_news/erd.png )
+![ ABC ERD ]  ( ./she_codes_news/she_codes_news/erd.png )
 
 ## Project Features
 - [x] Order stories by date!
