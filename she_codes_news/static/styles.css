@@ -197,11 +197,17 @@ input, textarea{
 form{
     display: flex;
     flex-flow: column wrap;
-
+    width: 500px;
+}
+main{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 #story_form{
     display: grid;
     gap: 1rem;
+    width: 500px;
 }
 #div_id_title{
     grid-area: 1 / 1 / span 1 / span 1;
@@ -217,7 +223,7 @@ form{
     grid-area: 3 / 1 / span 1 / span 1;     
 }
 #submit{
-    grid-area: 4 / 2 / span 1 / span 1;
+    grid-area: 4 / 1 / span 1 / span 2;
     background-color: var(--teal-dark);
     padding: 5px;
     border-radius: 5px;
