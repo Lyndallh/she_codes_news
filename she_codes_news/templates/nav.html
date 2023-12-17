@@ -1,10 +1,12 @@
 <nav>
     {% if request.user.is_authenticated %}
-    <a class = "hyperlink" href="{% url 'users:profile' %}"><h2>{{ user.username }}</h2></a>
     <a  id= "new-story" href="{% url 'news:newStory' %}">New Story</a>
     <a class = "hyperlink-button" href="{% url 'logout' %}">Logout</a>
+    <a id = "nav_user" class = "hyperlink" href="{% url 'users:profile' %}"><h2>{{ user.username }}</h2></a>
 
     {% else %}
-        <a class = "hyperlink-button" href="{% url 'login' %}">Login</a>
+    <a class= "hyperlink-button" href="{% url 'login' %}">Login</a>
+    <a id = "new-story" href="/users/create-account?next={{request.path}}">Sign up</a>
+    <a id = "nav_user"><h2> </h2></a>
     {% endif %}
 </nav>

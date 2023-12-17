@@ -6,9 +6,13 @@
    <div id="user_stories">
     {% if user_stories %}
         {% for story in user_stories %}
-        <a href="{%url 'news:story' story.id %}">
-            <h3>{{story.title}}</h3>                     
-      <h6>     - {{ story.pub_date }}</h6> 
+        <div class="story-card">
+            <a href="{%url 'news:story' story.id %}"  >
+            <img src="{{ story.image }}">
+            <h3 >{{story.title}}</h3>                     
+            <h6> - {{ story.pub_date }}</h6>
+            </a>
+        </div>
         {% endfor %}
     {% else %}
         <p>No stories for {{ user.username }} yet.</p>
@@ -19,12 +23,15 @@
   <div id="user_comments">
     {% if user_comments %}
         {% for comments in user_comments %}
-        <a href="{%url 'news:story' comments.story.id %}">
-        <h3>{{comments.story.title}}</h3>
-        <span class="emphasized"> {{ comments.text }} </span>       
-                       
-      <p>     - {{ comments.date }}</p> 
-
+        <div class="story_comment">
+            <div class = "comment_bubble" >
+                <span id="comment_text" class="emphasized"> {{ comments.text }} </span>       
+                <h6 id = "comment_date"> - {{ comments.date }}</h6> 
+                <a id = "story_title" href="{%url 'news:story' comments.story.id %}">
+                    <h5>{{comments.story.title}}</h5>
+                </a>
+            </div>
+        </div>
         {% endfor %}
     {% else %}
         <p>No comments for {{ user.username }} yet.</p>

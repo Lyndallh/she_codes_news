@@ -28,9 +28,12 @@
 <br>
     {% if story.comments.all %}
         {% for comments in story.comments.all %}
-        <span class="emphasized"> {{ comments.text }} </span>
-        <h6><a href = "{% url 'news:author' comments.author_id %}">- {{ comments.author }}, {{ comments.date }}</a></h6>
-            <br>                  
+    <div class="story_comment">
+        <a id="comment_author" href = "{% url 'news:author' comments.author_id %}">{{ comments.author }}</a>        
+        <div class = "comment_bubble"><span id = "comment_text" class="emphasized"> {{ comments.text }} </span>
+        <h6 id = "comment_date">{{ comments.date }}</h6>
+        </div>
+    </div>    <br>                  
         {% endfor %}
         {% else %}
             <p>There are no comments for this story..... yet.</p>
@@ -42,8 +45,9 @@
         {% if request.user.is_authenticated %}
             <form method = "POST" action= "{% url 'news:addComment' story.id %}">
                 {% csrf_token %}
-                <h5>Leave a comment:</h5>
+                <h5>Join the conversation:</h5>
                 {{ form.text }}
+                <br>
                 <input class= "hyperlink-button" type ="submit" value="Submit">
             </form>
             {% else %}

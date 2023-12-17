@@ -36,11 +36,17 @@
   <div id="author_comments">
     {% if author_comments %}
         {% for comments in author_comments %}
-        <a class = "comments" href="{%url 'news:story' comments.story.id %}">
+    <div class="story_comment">
+        <div class = "comment_bubble" >
             <span id="comment_text" class="emphasized"> {{ comments.text }} </span>       
             <h6 id = "comment_date"> - {{ comments.date }}</h6> 
-            <h5 id = "story_title"> {{comments.story.title}}</h5>
-        {% endfor %}
+            <a id = "story_title" href="{%url 'news:story' comments.story.id %}"> 
+                <h5>{{comments.story.title}}</h5>
+                <h6>{{comments.story.author}}</h6>
+             </a>
+        </div>
+    </div>
+            {% endfor %}
     {% else %}
         <p>No comments for {{ author }} yet.</p>
     {% endif %}
