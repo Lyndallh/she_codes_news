@@ -1,4 +1,4 @@
- #Lindi Harding - She Codes News Project
+ # Lindi Harding - She Codes News Project
  
  ## About This Project
  
@@ -15,7 +15,7 @@ When you need to specify terminal commands, you can surround them withbackticks,
 ![ ABC ERD ]  ( ./she_codes_news/she_codes_news/erd.png )
 
 ## Project Features
-- [x] Order stories by date  ![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
+- [x] Order stories by date  ![ Stories ordered by date ]( {{ ./relative_path_to_image_file }} )
 - [x] Styled "new story" form  ![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
 - [x] Story images  ![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
 - [x] Log-in/log-out  ![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
