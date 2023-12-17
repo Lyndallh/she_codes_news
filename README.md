@@ -7,7 +7,7 @@ This project is a news website created for She Codes Plus Django Module. Visitor
 - 'other news'
 - 'contrubitions' (news and comments) by author
 
-Registered users who are logged in can ineract by
+Registered users who are logged in can interact by
 - making contributions (news storys and comments)
 - view their personal profile information including a history of their contributions
 
