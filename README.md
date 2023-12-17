@@ -15,12 +15,15 @@ When you need to specify terminal commands, you can surround them withbackticks,
 ![ ABC ERD ]  ( ./she_codes_news/she_codes_news/erd.png )
 
 ## Project Features
-- [x] Order stories by date!
-[ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
-- [x] Styled "new story" form![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
-- [x] Story images![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
-- [x] Log-in/log-out![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
-- [x] "Account view" page![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
+- [x] Order stories by date
+![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
+- [x] Styled "new story" form
+![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
+- [x] Story images
+![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
+- [x] Log-in/log-out
+![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
+- [x] "Account view" page ![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
 - [x] "Create Account" page![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
 - [x] View stories by author![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
 - [x] "Log-in" button only visible when no user is logged in/"Log-out" buttononly visible when a user *is* logged in![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
